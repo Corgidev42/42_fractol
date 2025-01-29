@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:19:03 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:22:28 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:44:55 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ void	kill_app(t_app *app)
 		mlx_destroy_image(app->mlx, app->img);
 	if (app->win)
 		mlx_destroy_window(app->mlx, app->win);
-}
-
-void	Exit_Error(const char *message, t_app *app)
-{
-	perror(message);
-	kill_app(app);
-	exit(EXIT_FAILURE);
 }
 
 void	init_app(t_app *app)
@@ -45,29 +38,14 @@ void	init_app(t_app *app)
 	app->offset_x = 0;
 	app->offset_y = 0;
 	app->zoom = 1.0;
-	app->max_iter = ITERATIONS_MAX;
 	app->is_update = FALSE;
+	app->max_iter = ITERATIONS_MAX;
 }
 
 int	exit_program(t_app *app)
 {
 	kill_app(app);
 	exit(EXIT_SUCCESS);
-	return (0);
-}
-
-int	update_frame(t_app *app)
-{
-	if (app->is_update == FALSE)
-	{
-		if (app->fractal_type == MANDELBROT)
-			render_fractal(app, mandelbrot_iterations);
-		else if (app->fractal_type == JULIA)
-			render_fractal(app, julia_iterations);
-		else if (app->fractal_type == BURNING_SHIP)
-			render_fractal(app, burning_ship_iterations);
-		app->is_update = TRUE;
-	}
 	return (0);
 }
 

@@ -6,24 +6,32 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:37:42 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 12:31:23 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:51:15 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+double	parse_fraction(char *str, int i)
+{
+	double fraction = 0.0;
+	double divisor = 10.0;
+
+	while (str[i])
+	{
+		fraction += (str[i] - '0') / divisor;
+		divisor *= 10.0;
+		i++;
+	}
+	return fraction;
+}
+
 double	ft_atod(char *str)
 {
-	double	result;
-	double	fraction;
-	int		sign;
-	int		i;
-	double	divisor;
+	double result = 0.0;
+	int sign = 1;
+	int i = 0;
 
-	result = 0.0;
-	fraction = 0.0;
-	sign = 1;
-	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -37,15 +45,10 @@ double	ft_atod(char *str)
 	}
 	if (str[i] == '.')
 		i++;
-	divisor = 10.0;
-	while (str[i])
-	{
-		fraction += (str[i] - '0') / divisor;
-		divisor *= 10.0;
-		i++;
-	}
-	return (sign * (result + fraction));
+
+	return sign * (result + parse_fraction(str, i));
 }
+
 
 int	is_double(char *str)
 {

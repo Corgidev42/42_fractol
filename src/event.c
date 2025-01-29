@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:53:46 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:27:15 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:56:29 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,21 @@ int	keyboard_event(int keycode, t_app *app)
 	if (keycode == KEY_ESC)
 		exit_program(app);
 	else if (keycode == KEY_C)
-	{
-		app->color_shift = (app->color_shift + 1) % 3;
-	}
+		app->color_shift = (app->color_shift + 1) % 5;
 	else if (keycode == KEY_PLUS)
-	{
 		app->max_iter += 5;
-	}
 	else if (keycode == KEY_MINUS)
-	{
 		app->max_iter -= 5;
-	}
 	else if (keycode == KEY_R)
-	{
 		reset_fractal(app);
-	}
 	else if (keycode == KEY_LEFT)
-	{
 		app->offset_x -= 50;
-	}
 	else if (keycode == KEY_RIGHT)
-	{
 		app->offset_x += 50;
-	}
 	else if (keycode == KEY_UP)
-	{
 		app->offset_y -= 50;
-	}
 	else if (keycode == KEY_DOWN)
-	{
 		app->offset_y += 50;
-	}
 	app->is_update = FALSE;
 	return (0);
 }
