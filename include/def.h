@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:23:43 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/14 15:07:04 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:26:56 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 // keyboard_key
 # define KEY_ESC 53
 # define KEY_C 8
+# define KEY_P 35
+# define KEY_R 15
 # define KEY_UP 126
+# define KEY_PLUS 24
+# define KEY_MINUS 27
 # define KEY_DOWN 125
 # define KEY_LEFT 123
 # define KEY_RIGHT 124

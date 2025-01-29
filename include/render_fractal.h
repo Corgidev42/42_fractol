@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:31:59 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 11:39:07 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:56:02 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MANDELBROT_H
 
 # include "fractol.h"
+
+void	put_pixel(t_app *app, int x, int y, int color, int use_temp);
 
 /**
  * @file render_fractal.h
@@ -41,25 +43,6 @@ int		get_color(int iter, int max_iter, int color_shift);
  */
 void	pixel_to_complex(int x, int y, t_app *app, double *real, double *imag);
 
-/**
- * @brief Renders the fractal using the provided iteration function.
- *
- * This function takes an application context and an iteration function pointer
-
-	* to render the fractal. The iteration function determines the number of iterations
- * for each point in the fractal.
- *
- * @param app Pointer to the application context.
-
-	* @param iteration Function pointer to the iteration function. The iteration function
-
-	*        takes two double parameters representing the coordinates and a pointer to the
- *        application context,
-	and returns an integer representing the number of iterations.
- *
-
-	* @return int Status code indicating success or failure of the rendering process.
- */
 int		render_fractal(t_app *app, int (*iteration)(double, double, t_app *));
 
 #endif

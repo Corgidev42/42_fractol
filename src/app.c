@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:19:03 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 11:35:09 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:24:47 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,15 @@ void	init_app(t_app *app)
 			&app->line_length, &app->endian);
 	if (!app->addr)
 		Exit_Error("Failed to access image data", app);
-	app->zoom = 1.0;
+	app->temp_img = mlx_new_image(app->mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (!app->temp_img)
+		Exit_Error("Failed to create temporary image", app);
+	app->temp_addr = mlx_get_data_addr(app->temp_img, &app->bits_per_pixel,
+			&app->line_length, &app->endian);
 	app->offset_x = 0;
 	app->offset_y = 0;
+	app->zoom = 1.0;
+	app->precision = 40;
 	app->is_update = FALSE;
 }
 
@@ -68,6 +74,15 @@ int	update_frame(t_app *app)
 		app->is_update = TRUE;
 	}
 	return (0);
+}
+
+void	reset_fractal(t_app *app)
+{
+	app->offset_x = 0;
+	app->offset_y = 0;
+	app->zoom = 1.0;
+	app->is_update = FALSE;
+	update_frame(app);
 }
 
 void	fractal_app(t_app *app)

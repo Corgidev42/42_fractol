@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:25:27 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 11:32:27 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:24:30 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,27 @@
 
 typedef struct s_app
 {
-	void		*mlx;
-	void		*win;
-	double		zoom;
-	int			fractal_type;
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	int			is_update;
-	int			color_shift;
-	double		offset_x;
-	double		offset_y;
-	double		julia_re;
-	double		julia_im;
-}				t_app;
+	void	*mlx;
+	void	*win;
+	int		fractal_type;
+	void	*img;
+	char	*addr;
+	void	*temp_img;
+	char	*temp_addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		precision;
+	int		is_update;
+	int		color_shift;
+	double	julia_re;
+	double	julia_im;
+	double	zoom;
+	int		offset_x;
+	int		offset_y;
+}			t_app;
+
+void		reset_fractal(t_app *app);
 
 /**
  * @brief Exits the program with an error message.
@@ -40,28 +45,28 @@ typedef struct s_app
  * @param message The error message to display.
  * @param app The application context.
  */
-void			Exit_Error(const char *message, t_app *app);
+void		Exit_Error(const char *message, t_app *app);
 
 /**
  * @brief Initializes the application.
  *
  * @param app The application context to initialize.
  */
-void			init_app(t_app *app);
+void		init_app(t_app *app);
 
 /**
  * @brief Cleans up and terminates the application.
  *
  * @param app The application context to terminate.
  */
-void			kill_app(t_app *app);
+void		kill_app(t_app *app);
 
 /**
  * @brief Runs the fractal application.
  *
  * @param app The application context.
  */
-void			fractal_app(t_app *app);
+void		fractal_app(t_app *app);
 
 /**
  * @brief Handles the program exit routine.
@@ -69,7 +74,7 @@ void			fractal_app(t_app *app);
  * @param app The application context.
  * @return int Status code for the exit routine.
  */
-int				exit_program(t_app *app);
+int			exit_program(t_app *app);
 
 /**
  * @brief Updates the frame of the application.
@@ -81,6 +86,6 @@ int				exit_program(t_app *app);
  * @param app A pointer to the application structure.
  * @return An integer indicating the success or failure of the update operation.
  */
-int				update_frame(t_app *app);
+int			update_frame(t_app *app);
 
 #endif

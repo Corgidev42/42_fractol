@@ -36,6 +36,9 @@ all: $(OBJ_DIR) $(OBJ_FILES)
 run: all
 	DYLD_LIBRARY_PATH=/Users/dev/Documents/Workspace/C/$(PROJECT_NAME)/lib  ./$(PROJECT_NAME)
 
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
+
 # Règle pour compiler les fichiers sources .c en fichiers objets .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@

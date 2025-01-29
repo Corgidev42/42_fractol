@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 10:29:07 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 11:29:45 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/28 11:21:54 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "error_handling.h"
 # include "event.h"
 # include "render_fractal.h"
+# include "move.h"
 # include "iteration.h"
 
 #endif
