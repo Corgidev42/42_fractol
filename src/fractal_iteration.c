@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:29:41 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 10:25:42 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:56:50 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@ int	burning_ship_iterations(double real, double imag, t_app *app)
 	double		z_im;
 	double		temp;
 	int			i;
-	int	max_iterations = app->precision;
 
 	z_re = 0;
 	z_im = 0;
 	i = 0;
-	while ((pow(z_re, 2) + pow(z_im, 2)) <= 4 && i < max_iterations)
+	while ((pow(z_re, 2) + pow(z_im, 2)) <= 4 && i < app->max_iter)
 	{
 		z_re = fabs(z_re);
 		z_im = fabs(z_im);
@@ -39,10 +38,9 @@ int	julia_iterations(double z_re, double z_im, t_app *app)
 {
 	int			i;
 	double		temp;
-	int	max_iterations = app->precision;
 
 	i = 0;
-	while ((pow(z_re, 2) + pow(z_im, 2)) <= 4 && i < max_iterations)
+	while ((pow(z_re, 2) + pow(z_im, 2)) <= 4 && i < app->max_iter)
 	{
 		temp = pow(z_re, 2) - pow(z_im, 2) + app->julia_re;
 		z_im = 2 * z_re * z_im + app->julia_im;
@@ -58,12 +56,11 @@ int	mandelbrot_iterations(double real, double imag, t_app *app)
 	double z_im;
 	double temp;
 	int i;
-	int max_iterations = app->precision;
 
 	z_re = 0;
 	z_im = 0;
 	i = 0;
-	while (pow(z_re, 2) + pow(z_im, 2) <= 4 && i < max_iterations)
+	while (pow(z_re, 2) + pow(z_im, 2) <= 4 && i < app->max_iter)
 	{
 		temp = pow(z_re, 2) - pow(z_im, 2) + real;
 		z_im = 2 * z_re * z_im + imag;

@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:25:27 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 10:24:30 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:54:34 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ typedef struct s_app
 	int		fractal_type;
 	void	*img;
 	char	*addr;
-	void	*temp_img;
-	char	*temp_addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		precision;
+	int		max_iter;
 	int		is_update;
 	int		color_shift;
 	double	julia_re;

@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:23:43 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 10:26:56 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:21:46 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 800
+# define ITERATIONS_MAX 20
 
 // keyboard_key
 # define KEY_ESC 53

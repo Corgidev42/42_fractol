@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:19:03 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 10:24:47 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:22:28 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,10 @@ void	init_app(t_app *app)
 			&app->line_length, &app->endian);
 	if (!app->addr)
 		Exit_Error("Failed to access image data", app);
-	app->temp_img = mlx_new_image(app->mlx, WIN_WIDTH, WIN_HEIGHT);
-	if (!app->temp_img)
-		Exit_Error("Failed to create temporary image", app);
-	app->temp_addr = mlx_get_data_addr(app->temp_img, &app->bits_per_pixel,
-			&app->line_length, &app->endian);
 	app->offset_x = 0;
 	app->offset_y = 0;
 	app->zoom = 1.0;
-	app->precision = 40;
+	app->max_iter = ITERATIONS_MAX;
 	app->is_update = FALSE;
 }
 
@@ -81,6 +76,7 @@ void	reset_fractal(t_app *app)
 	app->offset_x = 0;
 	app->offset_y = 0;
 	app->zoom = 1.0;
+	app->max_iter = ITERATIONS_MAX;
 	app->is_update = FALSE;
 	update_frame(app);
 }

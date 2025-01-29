@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:31:59 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/28 16:56:02 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:04:43 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "fractol.h"
 
-void	put_pixel(t_app *app, int x, int y, int color, int use_temp);
+void	put_pixel(t_app *app, int x, int y, int color);
 
 /**
  * @file render_fractal.h
