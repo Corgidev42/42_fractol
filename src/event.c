@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:53:46 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:56:29 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:39:45 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,17 @@ int	keyboard_event(int keycode, t_app *app)
 	app->is_update = FALSE;
 	return (0);
 }
+
 int	mouse_event(int button, int x, int y, t_app *app)
 {
 	double	zoom_factor;
 
+	(void)x;
+	(void)y;
 	if (button == MOUSE_SCROLL_UP)
-		zoom_factor = 1.5;
+		zoom_factor = 1.2;
 	else if (button == MOUSE_SCROLL_DOWN)
-		zoom_factor = 0.7;
+		zoom_factor = 0.9;
 	else
 		return (0);
 	app->zoom *= zoom_factor;

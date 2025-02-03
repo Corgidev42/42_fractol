@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:49:45 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/16 12:26:59 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:05:16 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char *argv[])
 
 	if (argc >= 2)
 	{
+		init_app(&app);
 		fractal_type = check_entry(argv, &app);
 		if (fractal_type == 0)
 		{

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:32:47 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:43:31 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:42:48 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	Exit_Error(const char *message, t_app *app)
+void	exit_error(const char *message, t_app *app)
 {
 	perror(message);
 	kill_app(app);

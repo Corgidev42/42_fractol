@@ -1,69 +1,67 @@
 # Compiler et flags
 CC = gcc
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
 
-# Nom du projet à définir pour chaque projet
-PROJECT_NAME = 42_fractol
+# Nom du projet
+PROJECT_NAME = fractol
 
 # Include path (répertoire contenant les fichiers headers du projet)
-INCLUDES = -I/Users/dev/Documents/Workspace/C/$(PROJECT_NAME)/include
+INCLUDES = -I ./include
 
 # Library path for libft.a (chemin vers libft.a)
-LIBFT_DIR = /Users/dev/Documents/Workspace/C/mylib/lib
-LIBFT = -L$(LIBFT_DIR) -lft
+LIBFT_DIR = mylib
+LIBFT = $(LIBFT_DIR)/lib/libft.a
 
-# Library path for libmlx.dylib
-LIBMLX_DIR = /Users/dev/Documents/Workspace/C/$(PROJECT_NAME)/lib
+MLX_DIR = minilibx-linux
+MLX = $(MLX_DIR)/libmlx.a
 
 # Répertoire source du projet
 SRC_DIR = ./src
-OBJ_DIR = ./obj
 
 # Trouver tous les fichiers .c dans le répertoire src/
 SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
 
-# Exclure test.c de la liste des fichiers sources pour la compilation principale
-SRC_FILES_EXCLUDE_TEST = $(filter-out $(SRC_DIR)/test.c, $(SRC_FILES))
+# Répertoire où seront stockés les fichiers objets
+OBJ_DIR = obj
 
-# Fichiers objets à partir des fichiers .c du projet (sauf test.c)
-OBJ_FILES = $(SRC_FILES_EXCLUDE_TEST:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# Liste des fichiers objets (transformation des .c en .o dans obj/)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 # Default target : compile le projet principal
-all: $(OBJ_DIR) $(OBJ_FILES)
-	$(CC) $(OBJ_FILES) $(CFLAGS) $(INCLUDES) $(LIBFT) -L$(LIBMLX_DIR) -Wl,-rpath,$(LIBMLX_DIR) -lmlx -o $(PROJECT_NAME)
+all: $(PROJECT_NAME)
 
-# Exécuter le programme avec la bibliothèque libmlx.dylib
-run: all
-	DYLD_LIBRARY_PATH=/Users/dev/Documents/Workspace/C/$(PROJECT_NAME)/lib  ./$(PROJECT_NAME)
-
-$(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+# Création de l'exécutable
+$(PROJECT_NAME): $(LIBFT) $(MLX) $(OBJ_FILES)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_FILES) $(LIBFT) $(MLX) -lXext -lX11 -lm -o $@
 
 # Règle pour compiler les fichiers sources .c en fichiers objets .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 
-# Règle pour générer et exécuter les tests
-test: $(SRC_DIR)/test.c $(OBJ_FILES)
-	@if [ -f $(SRC_DIR)/test.c ]; then \
-		$(CC) $(CFLAGS) $(INCLUDES) $(SRC_DIR)/test.c $(OBJ_FILES) $(LIBFT) $(LIBMLX) -o test_runner; \
-		./test_runner; \
-	else \
-		echo "Please rename your generated test file to 'test.c' and place it here."; \
-		echo "Then run 'make test' to execute the tests."; \
-	fi
+# Création du répertoire obj s'il n'existe pas
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+# Compilation de la MinilibX et de la Libft
+$(MLX):
+	make -C $(MLX_DIR)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 # Nettoyage des fichiers objets uniquement
 clean:
 	rm -rf $(OBJ_DIR)
+	make -C $(MLX_DIR) clean
+	make -C $(LIBFT_DIR) clean
 	@echo "Cleaned object files."
 
 # Nettoyage complet : objets, exécutable principal et fichiers de test
 fclean: clean
-	rm -f $(PROJECT_NAME) test_runner
+	rm -f $(PROJECT_NAME)
+	make -C $(LIBFT_DIR) fclean
 	@echo "Fully cleaned: removed executables and test binaries."
 
 # Reconstruire tout (objets, exécutable principal, puis tests)
 re: fclean all
 	@echo "Rebuilt everything."
-

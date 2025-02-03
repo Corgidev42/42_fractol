@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_fractal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:53:42 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:55:56 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:22:10 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,36 @@ void	put_pixel(t_app *app, int x, int y, int color)
 
 int	get_color(int iter, int max_iter, int color_shift)
 {
+	double	t;
+
 	if (iter == max_iter)
 		return (0x000000);
-	double t = (double)iter / max_iter;
-
+	t = (double)iter / max_iter;
 	if (color_shift == 0)
-		return color_grayscale(t);
+		return (color_grayscale(t));
 	else if (color_shift == 1)
-		return color_fire(t);
+		return (color_fire(t));
 	else if (color_shift == 2)
-		return color_cool(t);
+		return (color_cool(t));
 	else if (color_shift == 3)
-		return color_sunset(t);
+		return (color_sunset(t));
 	else if (color_shift == 4)
-		return color_ocean(t);
+		return (color_ocean(t));
 	else
-		return color_grayscale(t);
+		return (color_grayscale(t));
 }
 
-void	pixel_to_complex(int x, int y, t_app *app, double *real, double *imag)
+void	process_pixel(int x, int y, t_app *app,
+	int (*iteration)(double, double, t_app *))
 {
-	*real = (x + app->offset_x - WIN_WIDTH / 2.0) / (app->zoom * WIN_WIDTH / 4);
-	*imag = (y + app->offset_y - WIN_HEIGHT / 2.0) / (app->zoom * WIN_HEIGHT
-			/ 4);
-}
+	double	real;
+	double	imag;
+	int		iter;
+	int		color;
 
-void	process_pixel(int x, int y, t_app *app, int (*iteration)(double, double, t_app *))
-{
-	double real, imag;
-	int iter, color;
-
-	pixel_to_complex(x, y, app, &real, &imag);
+	real = (x + app->offset_x - WIN_WIDTH / 2.0) / (app->zoom * WIN_WIDTH / 4);
+	imag = (y + app->offset_y - WIN_HEIGHT / 2.0)
+		/ (app->zoom * WIN_HEIGHT / 4);
 	iter = iteration(real, imag, app);
 	color = get_color(iter, app->max_iter, app->color_shift);
 	put_pixel(app, x, y, color);
@@ -64,7 +63,8 @@ void	process_pixel(int x, int y, t_app *app, int (*iteration)(double, double, t_
 
 int	render_fractal(t_app *app, int (*iteration)(double, double, t_app *))
 {
-	int x, y;
+	int	x;
+	int	y;
 
 	if (app->is_update == TRUE)
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:37:42 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:51:15 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:38:23 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 double	parse_fraction(char *str, int i)
 {
-	double fraction = 0.0;
-	double divisor = 10.0;
+	double	fraction;
+	double	divisor;
 
+	fraction = 0.0;
+	divisor = 10.0;
 	while (str[i])
 	{
 		fraction += (str[i] - '0') / divisor;
 		divisor *= 10.0;
 		i++;
 	}
-	return fraction;
+	return (fraction);
 }
 
 double	ft_atod(char *str)
 {
-	double result = 0.0;
-	int sign = 1;
-	int i = 0;
+	double	result;
+	int		sign;
+	int		i;
 
+	result = 0.0;
+	sign = 1;
+	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -45,15 +50,20 @@ double	ft_atod(char *str)
 	}
 	if (str[i] == '.')
 		i++;
-
-	return sign * (result + parse_fraction(str, i));
+	return (sign * (result + parse_fraction(str, i)));
 }
 
+int	error_double(void)
+{
+	ft_printf("Error\n");
+	return (0);
+}
 
 int	is_double(char *str)
 {
 	int	y;
 	int	dot_count;
+
 	y = 0;
 	dot_count = 0;
 	if (str[y] == '-' || str[y] == '+')
@@ -62,18 +72,11 @@ int	is_double(char *str)
 	{
 		if (str[y] == '.')
 		{
-			if (dot_count == 1)
-			{
-				ft_printf("Error\n");
-				return (0);
-			}
-			dot_count++;
+			if (dot_count++)
+				return (error_double());
 		}
 		else if (!ft_isdigit(str[y]))
-		{
-			ft_printf("Error\n");
-			return (0);
-		}
+			return (error_double());
 		y++;
 	}
 	return (1);
