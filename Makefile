@@ -5,15 +5,26 @@ CFLAGS = -Wall -Wextra -Werror
 # Nom du projet
 PROJECT_NAME = fractol
 
+# Détection de l'OS
+UNAME_S := $(shell uname -s)
+
+# Configuration spécifique à l'OS
+ifeq ($(UNAME_S), Linux)
+	MLX_DIR = minilibx-linux
+	MLX = $(MLX_DIR)/libmlx.a
+	MLX_FLAGS = -lXext -lX11 -lm
+else ifeq ($(UNAME_S), Darwin)
+	MLX_DIR = minilibx-mac-2
+	MLX = $(MLX_DIR)/libmlx.a
+	MLX_FLAGS = -framework OpenGL -framework AppKit -I /opt/X11/include/X11
+endif
+
 # Include path (répertoire contenant les fichiers headers du projet)
 INCLUDES = -I ./include
 
 # Library path for libft.a (chemin vers libft.a)
 LIBFT_DIR = mylib
 LIBFT = $(LIBFT_DIR)/lib/libft.a
-
-MLX_DIR = minilibx-linux
-MLX = $(MLX_DIR)/libmlx.a
 
 # Répertoire source du projet
 SRC_DIR = ./src
@@ -32,7 +43,7 @@ all: $(PROJECT_NAME)
 
 # Création de l'exécutable
 $(PROJECT_NAME): $(LIBFT) $(MLX) $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_FILES) $(LIBFT) $(MLX) -lXext -lX11 -lm -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ_FILES) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $@
 
 # Règle pour compiler les fichiers sources .c en fichiers objets .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
