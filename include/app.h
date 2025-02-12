@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:25:27 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/01/29 14:44:15 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:05:22 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,40 @@ typedef struct s_app
 	int		offset_y;
 }			t_app;
 
-void		reset_fractal(t_app *app);
-void		init_app(t_app *app);
+/**
+ * @brief Libère les ressources allouées et ferme proprement l'application.
+ *
+ * @param app Structure contenant les données de l'application.
+ */
 void		kill_app(t_app *app);
-void		fractal_app(t_app *app);
+
+/**
+ * @brief Initialise l'application et alloue les ressources nécessaires.
+ *
+ * @param app Structure contenant les données de l'application.
+ */
+void		init_app(t_app *app);
+
+/**
+ * @brief Quitte proprement le programme en libérant les ressources.
+ *
+ * @param app Structure contenant les données de l'application.
+ * @return Toujours retourne 0 (convention pour les hooks MLX).
+ */
 int			exit_program(t_app *app);
+
+/**
+ * @brief Réinitialise les paramètres du fractal à leur état d'origine.
+ *
+ * @param app Structure contenant les données de l'application.
+ */
+void		reset_fractal(t_app *app);
+
+/**
+ * @brief Lance la boucle principale de l'application et gère les événements.
+ *
+ * @param app Structure contenant les données de l'application.
+ */
+void		fractal_app(t_app *app);
 
 #endif
