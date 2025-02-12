@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:19:03 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/05 00:39:52 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:24:37 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	kill_app(t_app *app)
 		mlx_destroy_window(app->mlx, app->win);
 	if (app->mlx)
 	{
-		// mlx_destroy_display(app->mlx);
 		free(app->mlx);
 	}
 }

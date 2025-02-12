@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:31:59 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/12 18:10:39 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:24:06 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 
 /**
 
-	* @brief Place un pixel d'une certaine couleur à une position donnée dans l'image.
+* @brief Place un pixel d'une certaine couleur
+	à une position donnée dans l'image.
  *
  *
-	- Vérifie que le pixel est bien dans les limites de l'image avant de l'écrire.
+- Vérifie que le pixel est bien dans les limites de l'image avant de l'écrire.
  *
  * @param app Structure contenant les données de l'application,
 	y compris l'image.
@@ -32,10 +33,12 @@ void	put_pixel(t_app *app, int x, int y, int color);
 
 /**
 
-	* @brief Génère une couleur en fonction du nombre d'itérations et du mode de coloration.
+* @brief Génère une couleur en fonction du nombre
+	d'itérations et du mode de coloration.
  *
  *
-	- Différentes palettes de couleurs sont appliquées selon la valeur de color_shift.
+- Différentes palettes de couleurs sont appliquées
+	selon la valeur de color_shift.
  *
  * @param iter Nombre d'itérations effectuées avant divergence.
  * @param max_iter Nombre maximal d'itérations défini pour la fractale.
@@ -46,7 +49,8 @@ int		get_color(int iter, int max_iter, int color_shift);
 
 /**
 
-	* @brief Traite un pixel donné en appliquant l'algorithme de la fractale et en assignant une couleur.
+* @brief Traite un pixel donné en appliquant l'algorithme
+	de la fractale et en assignant une couleur.
  *
  * - Calcule les coordonnées complexes associées au pixel.
  * - Applique la fonction d'itération pour déterminer la valeur de la fractale.
@@ -56,7 +60,8 @@ int		get_color(int iter, int max_iter, int color_shift);
  * @param y Coordonnée Y du pixel.
  * @param app Structure contenant les données de l'application.
 
-	* @param iteration Pointeur vers la fonction d'itération spécifique à la fractale.
+* @param iteration Pointeur vers la fonction
+		d'itération spécifique à la fractale.
  */
 void	process_pixel(int x, int y, t_app *app, int (*iteration)(double, double,
 				t_app *));
@@ -69,7 +74,8 @@ void	process_pixel(int x, int y, t_app *app, int (*iteration)(double, double,
  *
  * @param app Structure contenant les données de l'application.
 
-	* @param iteration Pointeur vers la fonction d'itération spécifique à la fractale.
+* @param iteration Pointeur vers la
+	fonction d'itération spécifique à la fractale.
  * @return Toujours 0 (convention pour les hooks MLX).
  */
 int		render_fractal(t_app *app, int (*iteration)(double, double, t_app *));

@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:34:22 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/12 18:11:36 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:23:05 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	exit_error(const char *message, t_app *app);
  * @brief Met à jour le rendu de la fractale en fonction du type sélectionné.
  *
  *
-	- Détermine quel algorithme de fractale utiliser en fonction de `app->fractal_type`.
+- Détermine quel algorithme de fractale utiliser
+	en fonction de `app->fractal_type`.
  * - Appelle la fonction `render_fractal` avec l'algorithme correspondant.
  *
 	- Assure la mise à jour de l'affichage sans
