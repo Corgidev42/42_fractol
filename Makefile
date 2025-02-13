@@ -11,8 +11,8 @@ UNAME_S := $(shell uname -s)
 # Configuration spécifique à l'OS
 ifeq ($(UNAME_S), Linux)
 	MLX_DIR = minilibx-linux
-	MLX = $(MLX_DIR)/libmlx.a
-	MLX_FLAGS = -lXext -lX11 -lm
+	MLX = $(MLX_DIR)/libmlx_Linux.a
+	MLX_FLAGS = -lmlx -lXext -lX11
 else ifeq ($(UNAME_S), Darwin)
 	MLX_DIR = minilibx-mac-2
 	MLX = $(MLX_DIR)/libmlx.a
