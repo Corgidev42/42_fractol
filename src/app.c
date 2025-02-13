@@ -6,7 +6,7 @@
 /*   By: vbonnard <vbonnard@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 13:19:03 by vbonnard          #+#    #+#             */
-/*   Updated: 2025/02/12 18:24:37 by vbonnard         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:23:07 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	kill_app(t_app *app)
 	if (app->win)
 		mlx_destroy_window(app->mlx, app->win);
 	if (app->mlx)
-	{
 		free(app->mlx);
-	}
 }
 
 void	init_app(t_app *app)
