@@ -12,7 +12,7 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 	MLX_DIR = minilibx-linux
 	MLX = $(MLX_DIR)/libmlx_Linux.a
-	MLX_FLAGS = -lmlx -lXext -lX11
+	MLX_FLAGS = -lm -lXext -lX11
 else ifeq ($(UNAME_S), Darwin)
 	MLX_DIR = minilibx-mac-2
 	MLX = $(MLX_DIR)/libmlx.a
