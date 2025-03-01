@@ -3,7 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+      
+	+#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:53:36 by vbonnard          #+#    #+#             */
 /*   Updated: 2025/01/30 14:33:40 by vbonnard         ###   ########.fr       */
@@ -22,7 +23,7 @@ int	color_grayscale(double t)
 
 int	color_fire(double t)
 {
-	int	red ;
+	int	red;
 	int	green;
 	int	blue;
 
@@ -34,7 +35,7 @@ int	color_fire(double t)
 
 int	color_cool(double t)
 {
-	int	red ;
+	int	red;
 	int	green;
 	int	blue;
 
@@ -46,7 +47,7 @@ int	color_cool(double t)
 
 int	color_sunset(double t)
 {
-	int	red ;
+	int	red;
 	int	green;
 	int	blue;
 
@@ -58,7 +59,7 @@ int	color_sunset(double t)
 
 int	color_ocean(double t)
 {
-	int	red ;
+	int	red;
 	int	green;
 	int	blue;
 

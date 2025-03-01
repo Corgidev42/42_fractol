@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:49:45 by vbonnard          #+#    #+#             */
 /*   Updated: 2025/01/30 14:05:16 by vbonnard         ###   ########.fr       */

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 17:30:08 by dev               #+#    #+#             */
 /*   Updated: 2025/01/31 16:11:53 by vbonnard         ###   ########.fr       */

@@ -3,31 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_long_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+       +#+
+ */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 22:42:10 by marvin            #+#    #+#             */
 /*   Updated: 2025/01/31 16:11:09 by vbonnard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_long_size(long n)
-{
-	int	len;
+long	ft_long_size(long n) {
+  int len;
 
-	len = 0;
-	if (n == -2147483648)
-		return (11);
-	if (n < 0)
-	{
-		n = -n;
-		len++;
-	}
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
+  len = 0;
+  if (n == -2147483648)
+    return (11);
+  if (n < 0) {
+    n = -n;
+    len++;
+  }
+  if (n == 0)
+    return (1);
+  while (n > 0) {
+    n /= 10;
+    len++;
+  }
+  return (len);
 }

@@ -3,7 +3,8 @@
 /*                                                        :::      ::::::::   */
 /*   fractal_iteration.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+      
+	+#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:29:41 by vbonnard          #+#    #+#             */
 /*   Updated: 2025/01/30 14:40:00 by vbonnard         ###   ########.fr       */
@@ -14,10 +15,10 @@
 
 int	burning_ship_iterations(double real, double imag, t_app *app)
 {
-	double		z_re;
-	double		z_im;
-	double		temp;
-	int			i;
+	double	z_re;
+	double	z_im;
+	double	temp;
+	int		i;
 
 	z_re = 0;
 	z_im = 0;
@@ -36,8 +37,8 @@ int	burning_ship_iterations(double real, double imag, t_app *app)
 
 int	julia_iterations(double z_re, double z_im, t_app *app)
 {
-	int			i;
-	double		temp;
+	int		i;
+	double	temp;
 
 	i = 0;
 	while ((pow(z_re, 2) + pow(z_im, 2)) <= 4 && i < app->max_iter)

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   render_fractal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbonnard <vbonnard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vbonnard <vbonnard@student.42perpignan.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:53:42 by vbonnard          #+#    #+#             */
 /*   Updated: 2025/01/31 16:22:10 by vbonnard         ###   ########.fr       */
